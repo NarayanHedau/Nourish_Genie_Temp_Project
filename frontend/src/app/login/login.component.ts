@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormControlName, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginAndRegistrationService } from '../services/login-and-registration.service';
 @Component({
   selector: 'app-login',
@@ -8,7 +9,7 @@ import { LoginAndRegistrationService } from '../services/login-and-registration.
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private _fb:FormBuilder,private ser:LoginAndRegistrationService) { }
+  constructor(private _fb:FormBuilder,private ser:LoginAndRegistrationService, private _rout:Router) { }
   loginForm:FormGroup=new FormGroup({})
   ngOnInit(): void {
 
@@ -27,9 +28,15 @@ export class LoginComponent implements OnInit {
       return
      }
     console.log(">>>>>>>>>>>>>", this.loginForm.value)
-    this.ser.login(this.loginForm.value).subscribe((res)=>{
-      console.log(res)
+    this.ser.login(this.loginForm.value).subscribe((res:any)=>{
+      console.log(res);
+      const data= JSON.stringify(res)
+      const response = localStorage.setItem("login",data) 
       // this.masssage="Login Successfull"
+
+      if(res){
+       this._rout.navigate(["index"])  
+      }
     }, error=>{
       console.log(error);
       this.masssage=error.massage

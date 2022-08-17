@@ -21,21 +21,21 @@ app.post("/register", async(req, res)=>{
 app.post("/login", async(req, res)=>{
     try {
         const {password, email}= req.body;
-        const result = await User.find();
-        result.forEach((e)=>{
-            const emailId = json.parse(e.email);
-            const pass  = json.parse(e.password);
-
-            if(email==emailId && password==pass){
-                res.send("Login Successfull")
-            }else{
-                res.send("Incorrect Username and Password")
-            }
-        })
+        const result = await User.findOne({email:email});
+        if (!result) {
+            res.send("Unable to fetch credentials.... ")
+        }else{
+            return res.json({
+                status: 200,
+                message:"Login Successfull"
+            })
+        }
+     
     } catch (error) {
-        
+        console.error(error)
     }
 })
+
 app.listen(3000,()=>{
  console.log("Connected")
 })

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormControlName, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginAndRegistrationService } from '../services/login-and-registration.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { LoginAndRegistrationService } from '../services/login-and-registration.
 })
 export class RegistrationComponent implements OnInit {
   maxlength=12
-  constructor( private _fb:FormBuilder,private ser:LoginAndRegistrationService) { }
+  constructor( private _fb:FormBuilder,private ser:LoginAndRegistrationService, private _rout:Router) { }
 
   regForm:FormGroup=new FormGroup({})
   ngOnInit(): void {
@@ -41,6 +42,9 @@ save(){
 this.ser.register(this.regForm.value).subscribe((res)=>{
   console.log(res);
   this.massage=" Successfull"
+  if(res){
+    this._rout.navigate(["index"])  
+   }
 },error=>{
   console.log(error);
   this.massage=error.message

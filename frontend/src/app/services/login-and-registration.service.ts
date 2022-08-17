@@ -14,6 +14,6 @@ export class LoginAndRegistrationService {
    return this._httpclien.post(this.url +"register",data)
   }
   login(data:any){
-   return this._httpclien.post("http://localhost:3000/login",data)
+   return this._httpclien.post("http://localhost:3000/login",data, {responseType: 'text'})
   }
 }
