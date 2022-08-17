@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginAndRegistrationService } from '../services/login-and-registration.service';
 
 @Component({
   selector: 'app-header',
@@ -8,20 +9,19 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private _logout:Router) { }
+  constructor(private _logout:Router, public _ser:LoginAndRegistrationService) { }
 
   ngOnInit(): void {
   
   }
- signHide:boolean=true 
- hide(){
-  this.signHide=JSON.parse(localStorage.getItem("login") || "[]")
- 
+ signHide:any
+ log=true
+ logOut(){
+  this._ser.logout();
+  this._logout.navigate([ "home"])
  }
- logout(){
-  localStorage.removeItem("login")
-this._logout.navigate(["home"]);
-this.signHide=false
+
+ login(){
+  this.signHide =this._ser.islogedin()
  }
- 
 }

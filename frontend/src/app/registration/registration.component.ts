@@ -39,9 +39,11 @@ save(){
  if(this.regForm.invalid){
   return
  }
-this.ser.register(this.regForm.value).subscribe((res)=>{
+this.ser.register(this.regForm.value).subscribe((res:any)=>{
   console.log(res);
-  this.massage=" Successfull"
+  this.massage=" Successfull";
+  
+localStorage.setItem("login", res )
   if(res){
     this._rout.navigate(["index"])  
    }
