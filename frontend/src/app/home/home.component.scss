@@ -33,3 +33,50 @@ a {
 .a:hover {
     color: red;
   }
+  .featured{
+    color: orangered !important;
+    margin-top: 15px;
+  }
+  .featuredDiv{
+    padding: 15px;
+    font-size: 38px;
+    height: 100px;
+   justify-content: center;
+
+  }
+  .cat-item .cat-img img, .product-item .product-img img {
+    transition: .5s;
+}
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+a {
+    color: #D19C97;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+}
+.cat_img :hover{
+  
+}
+.dropdownItem{
+    background-color: orangered;
+}
+.dropdown-item{
+height: 35px;
+text-decoration: none;
+font-size: 17px;
+}

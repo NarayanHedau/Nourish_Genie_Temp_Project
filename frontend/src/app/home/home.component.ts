@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginAndRegistrationService } from '../services/login-and-registration.service';
+
 
 @Component({
   selector: 'app-home',
@@ -7,10 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private _logout:Router, public _ser:LoginAndRegistrationService) { }
   ngOnInit(): void {
+  
   }
-  enable=true;
-  hide=true
+ signHide:any
+ log=true
+ logOut(){
+  this._ser.logout();
+  this._logout.navigate([ "home"])
+ }
+
+ login(){
+  this.signHide =this._ser.islogedin()
+ }
 }
