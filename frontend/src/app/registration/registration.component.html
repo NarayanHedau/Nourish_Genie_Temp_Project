@@ -43,6 +43,51 @@
             <br><br>
 
 
+            <select
+            class="form-select mb-3"
+            aria-label="Default select example"
+            (change)="getState($event)"
+            name="CountryOfOrigin"
+          >
+            <option selected value="">Select your Country</option>
+            <option *ngFor="let item of countries" [value]="item.isoCode">
+              {{ item.name }}
+            </option>
+          </select>
+
+          <br>
+
+
+
+          <select
+          class="form-select"
+          (change)="getcity($event)"
+          [formControl]="statee"
+        >
+          <option value="">select your state</option>
+          <option *ngFor="let item of state" [value]="item.isoCode">
+            {{ item.name }}
+          </option>
+        </select>
+
+        <br>
+
+
+
+        <select class="form-select" formControlName="city">
+            <option value="">select your city</option>
+            <option *ngFor="let item of city" [value]="item.name">
+              {{ item.name }}
+            </option>
+        </select>
+
+
+
+
+
+
+
+
             <button type="submit" class="signUp-btn" >Sign up</button>
         </div>
 

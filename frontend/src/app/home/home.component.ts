@@ -9,9 +9,36 @@ import { LoginAndRegistrationService } from '../services/login-and-registration.
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
+product:Array<any>=[];
+p: number = 1;
   constructor(private _logout:Router, public _ser:LoginAndRegistrationService) { }
   ngOnInit(): void {
+
+
+  this.product=[
+    { qua:"15 Products", img:"./assets/cat-1.jpg", type:"  Men's dresses "  },
+    { qua:"15 Products", img:"./assets/cat-2.jpg", type:"  Men's dresses "  },
+
+    { qua:"15 Products", img:"./assets/cat-3.jpg", type:"  Men's dresses "  },
+
+    { qua:"15 Products", img:"./assets/cat-4.jpg", type:"  Men's dresses "  },
+
+    { qua:"15 Products", img:"./assets/cat-5.jpg", type:"  Men's dresses "  },
+
+    { qua:"15 Products", img:"./assets/cat-6.jpg", type:"  Men's dresses "  },
+
+    // { qua:"15 Products", img:"./assets/cat-7.jpg", type:"  Men's dresses "  },
+
+    // { qua:"15 Products", img:"./assets/cat-8.jpg", type:"  Men's dresses "  },
+
+    // { qua:"15 Products", img:"./assets/cat-1.jpg", type:"  Men's dresses "  },
+
+    // { qua:"15 Products", img:"./assets/cat-1.jpg", type:"  Men's dresses "  },
+
+
+
+  ]
+
   
   }
  signHide:any
@@ -24,4 +51,11 @@ export class HomeComponent implements OnInit {
  login(){
   this.signHide =this._ser.islogedin()
  }
+
+
+
+
+
+
+
 }

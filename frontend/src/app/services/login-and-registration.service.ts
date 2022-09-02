@@ -22,9 +22,9 @@ export class LoginAndRegistrationService {
   islogedin(){
     if(localStorage.getItem("login") == null
     ){
-     
+
       return this.Login=false;
-     
+
     }
     else{
       return true
@@ -33,6 +33,26 @@ export class LoginAndRegistrationService {
 
   logout(){
     localStorage.removeItem("login");
-    this.router.navigate([ "home"]) 
+    this.router.navigate([ "home"])
   }
+
+  // http://localhost:3000/countries
+
+  Getall_Country(){
+    return this._httpclien.get(this.url + 'countries')
+  }
+
+
+  state(country:any){
+    return this._httpclien.get( this.url + "states/"+country )
+  }
+
+
+
+  city(countrycode:any,statecode:any){
+    return this._httpclien.get(this.url + "cities/"+countrycode +statecode );
+
+
+  }
+
 }

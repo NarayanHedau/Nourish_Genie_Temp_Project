@@ -14,6 +14,15 @@ phoneNumber:{
 },
 password:{
   type:String
+},
+CountryOfOrigin:{
+  type:String
+},
+state:{
+  type:String
+},
+city:{
+  type:String
 }
 })
 module.exports = mongoose.model("User", User);
