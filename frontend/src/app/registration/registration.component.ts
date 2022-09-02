@@ -125,7 +125,7 @@ getcity(event: any) {
     console.log('st_ate', st_ate);
 
     this.stateCode = scode[0].name;
-    this.addProduct
+    this.addProduct.controls['description']
       .get('state')
       ?.patchValue(this.stateCode);
 
